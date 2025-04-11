@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Charles and Keith</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background: #fffefe;
+            color: rgb(0, 0, 0);
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #777;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+        }
+
+        .cart-count {
+            background: #e63946;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 14px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .cart-items {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-items th {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .cart-items td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .cart-items img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s;
+    z-index: 10;
+    color: #000;
+}
+
+.close-btn:hover {
+    color: #777;
+    transform: scale(1.1);
+}
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background: #f0f0f0;
+            border: none;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .remove-btn {
+            color: #e63946;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cart-summary {
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .checkout-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #555;
+        }
+
+        .continue-btn {
+            background: #777;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .continue-btn:hover {
+            background: #555;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .continue-shopping:hover {
+            color: #777;
+        }
+
+        /* Confirmation Dialog Styles */
+        .confirmation-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .confirmation-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .confirmation-message {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .confirmation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .confirm-btn {
+            background: #e63946;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .confirm-btn:hover {
+            background: #c1121f;
+        }
+
+        .cancel-btn {
+            background: #777;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .cancel-btn:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="cart-container">
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-content">
+                <!-- Cart items will be inserted here by JavaScript -->
+            </div>
+            <div class="cart-summary">
+                <p>Total: <span id="cart-total">₱0.00</span></p>
+                <div class="button-group">
+                    <button class="checkout-btn">Proceed to Checkout</button>
+                    <a href="shop.html" class="continue-btn">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   
+
+    <!-- Confirmation Dialog -->
+    <div class="confirmation-dialog" id="confirmationDialog">
+        <div class="confirmation-box">
+            <p class="confirmation-message">Are you sure you want to remove this item from your cart?</p>
+            <div class="confirmation-buttons">
+                <button class="confirm-btn" id="confirmDelete">Remove</button>
+                <button class="cancel-btn" id="cancelDelete">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load cart from localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContent = document.getElementById('cart-content');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cartCount');
+            const confirmationDialog = document.getElementById('confirmationDialog');
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+            const cancelDeleteBtn = document.getElementById('cancelDelete');
+
+            let itemToDeleteIndex = null;
+
+            // Update cart count
+            function updateCartCount() {
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+
+            // Display cart items
+            function displayCart() {
+                if (cart.length === 0) {
+                    cartContent.innerHTML = `
+                        <div class="empty-cart">
+                            <p>Your cart is empty</p>
+                            <a href="shop.html" class="continue-shopping">Start Shopping</a>
+                        </div>
+                    `;
+                    cartTotal.textContent = '₱0.00';
+                    return;
+                }
+
+                let html = `
+                    <table class="cart-items">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    const subtotal = item.price * item.quantity;
+                    total += subtotal;
+
+                    html += `
+                        <tr>
+                            <td>
+                                <img src="${item.image}" alt="${item.name}">
+                                <span>${item.name}</span>
+                            </td>
+                            <td>₱${item.price.toFixed(2)}</td>
+                            <td>
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" 
+                                    onchange="updateQuantity(${index}, 0, this.value)">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </td>
+                            <td>₱${subtotal.toFixed(2)}</td>
+                            <td>
+                                <button class="remove-btn" onclick="showDeleteConfirmation(${index})">✕</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                html += `
+                        </tbody>
+                    </table>
+                `;
+
+                cartContent.innerHTML = html;
+                cartTotal.textContent = `₱${total.toFixed(2)}`;
+                updateCartCount();
+            }
+
+            // Show delete confirmation dialog
+            window.showDeleteConfirmation = function(index) {
+                itemToDeleteIndex = index;
+                confirmationDialog.style.display = 'flex';
+            }
+
+            // Confirm delete action
+            confirmDeleteBtn.addEventListener('click', function() {
+                if (itemToDeleteIndex !== null) {
+                    cart.splice(itemToDeleteIndex, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    displayCart();
+                    itemToDeleteIndex = null;
+                    confirmationDialog.style.display = 'none';
+                }
+            });
+
+            // Cancel delete action
+            cancelDeleteBtn.addEventListener('click', function() {
+                itemToDeleteIndex = null;
+                confirmationDialog.style.display = 'none';
+            });
+
+            // Update quantity
+            window.updateQuantity = function(index, change, newValue) {
+                if (newValue !== undefined) {
+                    cart[index].quantity = parseInt(newValue) || 1;
+                } else {
+                    cart[index].quantity += change;
+                    if (cart[index].quantity < 1) cart[index].quantity = 1;
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+            }
+
+            // Checkout button
+            document.querySelector('.checkout-btn').addEventListener('click', function() {
+                alert('Checkout functionality would go here!');
+                // In a real implementation, you would redirect to a checkout page
+                // window.location.href = 'checkout.html';
+            });
+
+            // Initialize
+            displayCart();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Us | Charles and Keith</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .logo .divider {
+            margin: 0 10px;
+            color: #aaa;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            font-family: 'Lato', sans-serif;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            padding: 6px 8px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1591561954555-607968c989ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* About Content */
+        .about-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .about-section {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 20px 0 15px;
+            color: #222;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+            }
+
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .about-hero {
+                height: 400px;
+                background-position: center 40%;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">CHARLES<span class="divider">|</span>KEITH</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="hero-content">
+            <h1>Our Story</h1>
+            <p>Discover the passion behind our brand</p>
+        </div>
+    </section>
+
+    <main class="about-container">
+        <section class="about-section">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>Founded in 1996, Charles & Keith is a Singapore-based fashion brand that has grown into a global name synonymous with contemporary style and accessible luxury.</p>
+                <p>What began as a single boutique has blossomed into an international brand with stores across Asia, Europe, and the Middle East. Our journey has been guided by a commitment to innovation, quality craftsmanship, and empowering our customers to express their individuality through fashion.</p>
+            </div>
+            <div class="about-image">
+                <img src="c&k.png" alt="Charles & Keith store">
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-image">
+                <img src="modeeeel.webp" alt="Fashion design">
+            </div>
+            <div class="about-text">
+                <h2>Our Design Philosophy</h2>
+                <p>At Charles & Keith, we believe luxury should be accessible without compromising on quality or design. Our creative team draws inspiration from global trends, architectural forms, and the dynamic energy of modern cities.</p>
+                <p>Each collection is thoughtfully crafted to combine style with practicality, ensuring our customers look and feel their best in every situation.</p>
+            </div>
+        </section>
+
+        <section class="values">
+            <div class="value-card">
+                <h3>Quality Craftsmanship</h3>
+                <p>We meticulously source materials and employ skilled artisans to create products that stand the test of time.</p>
+            </div>
+            <div class="value-card">
+                <h3>Sustainable Practices</h3>
+                <p>Committed to reducing our environmental impact through responsible sourcing and production methods.</p>
+            </div>
+            <div class="value-card">
+                <h3>Customer Focus</h3>
+                <p>Your satisfaction is our priority. We strive to exceed expectations at every touchpoint.</p>
+            </div>
+        </section>
+    </main>
+            <div>
+            <p>&copy; 2025 Charles & Keith. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

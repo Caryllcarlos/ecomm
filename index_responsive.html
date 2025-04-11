@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | CHARLES & KEITH</title>
+  <!-- Fonts: Playfair for logo, Lato for nav -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 22px 0;
+    }
+
+    .header-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+.close-btn:hover {
+    color: #777;
+    transform: scale(1.1);
+}
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #111;
+    }
+
+    .logo .divider {
+      margin: 0 10px;
+      color: #aaa;
+    }
+   
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #666;
+    }
+
+    .cart-icon {
+      margin-left: 30px;
+      font-size: 20px;
+      color: #333;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background-color: #e63946;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
+    #home {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #home h2 {
+      font-size: 36px;
+      font-weight: 600;
+    }
+
+    /* ===== Bag Section Styles ===== */
+    #bags {
+      padding: 60px 24px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    #bags h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .bag-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed to exactly 3 columns */
+      gap: 24px;
+    }
+
+    .bag-card img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .bag-card img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .bag-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .bag-grid {
+        grid-template-columns: 1fr; /* 1 column on small screens */
+      }
+      
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        gap: 15px;
+      }
+    }
+  
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 20px;
+      }
+
+      .header-container {
+        padding: 0 12px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    body {
+      padding: 0 12px;
+    }
+    </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">CHARLES<span class="divider">|</span>KEITH</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+            <a href="cart.html" class="cart-icon">🛒<span class="cart-count" id="cartCount">0</span></a>
+        
+    </div>
+  </header>
+
+  <section id="home">
+    <h2>Welcome to Charles & Keith</h2>
+  </section>
+
+  <!-- 👜 Featured Bags Section -->
+  <section id="bags">
+    <h2>Featured Bags</h2>
+    <div class="bag-grid">
+      <div class="bag-card">
+        <img src="bag1.png" alt="Bag 1">
+      </div>
+      <div class="bag-card">
+        <img src="bag2.png" alt="Bag 2">
+      </div>
+      <div class="bag-card">
+        <img src="bag3.png" alt="Bag 3">
+      </div>
+      <div class="bag-card">
+        <img src="bag4.png" alt="Bag 4">
+      </div>
+      <div class="bag-card">
+        <img src="bag5.png" alt="Bag 5">
+      </div>
+      <div class="bag-card">
+        <img src="bag6.png" alt="Bag 6">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 CHARLES & KEITH. All rights reserved.
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    });
+  </script>
+</body>
+</html>
